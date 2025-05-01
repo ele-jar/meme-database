@@ -1,7 +1,7 @@
 {
   "version": "v2.0.1",
   "build_date": "2025-05-01",
-  "show_download": true,
+  "show_download": false,
   "download_url": "https://github.com/yourusername/yourrepo/releases/latest",
   "changelog": "• Improved performance\n• Added new meme filters\n• Fixed UI bugs in dark mode"
 }
