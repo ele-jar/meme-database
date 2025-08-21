@@ -1,11 +1,12 @@
 :root {
-    --bg-color: #121212;
-    --card-color: #1e1e1e;
-    --primary-color: #bb86fc;
-    --secondary-color: #373737;
-    --text-color: #e0e0e0;
-    --border-color: #333;
-    --danger-color: #cf6679;
+    --bg-color: #1a1a1a;
+    --card-color: #2c2c2c;
+    --primary-color: #9b59b6;
+    --secondary-color: #34495e;
+    --text-color: #ecf0f1;
+    --border-color: #444;
+    --danger-color: #e74c3c;
+    --success-color: #2ecc71;
 }
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -13,46 +14,47 @@ body {
     color: var(--text-color);
     margin: 0;
     padding: 1rem;
+    line-height: 1.6;
 }
-main {
+main, header {
     max-width: 800px;
     margin: 0 auto;
 }
 header {
-    max-width: 800px;
-    margin: 0 auto 1rem auto;
+    margin-bottom: 1.5rem;
     text-align: center;
 }
 nav {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.5rem;
     background-color: var(--card-color);
     padding: 0.5rem;
-    border-radius: 8px;
+    border-radius: 25px;
     margin-top: 1rem;
 }
 nav a {
     color: var(--text-color);
     text-decoration: none;
     padding: 0.5rem 1rem;
-    border-radius: 6px;
-    transition: background-color 0.2s;
+    border-radius: 20px;
+    transition: all 0.2s ease-in-out;
+    font-weight: 500;
 }
 nav a:hover {
     background-color: var(--secondary-color);
 }
 nav a.active {
     background-color: var(--primary-color);
-    color: #000;
-    font-weight: bold;
+    color: #fff;
 }
 .card {
     background-color: var(--card-color);
-    border-radius: 8px;
-    padding: 1rem;
-    margin-bottom: 1rem;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
     border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 .card-header {
     display: flex;
@@ -60,61 +62,60 @@ nav a.active {
     align-items: center;
     margin-bottom: 1rem;
 }
-.card-header h2 {
-    margin: 0;
-    padding: 0;
-    border: none;
-}
 h1, h2 {
-    color: var(--primary-color);
-    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-bottom: 2px solid var(--primary-color);
     padding-bottom: 0.5rem;
     margin-top: 0;
 }
+h1 {
+    border: none;
+    color: var(--primary-color);
+    font-size: 2rem;
+}
+h2 {
+    font-size: 1.25rem;
+}
 p {
     opacity: 0.8;
-    line-height: 1.5;
 }
 input[type="text"], input[type="password"] {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.8rem 1rem;
     background-color: var(--bg-color);
     border: 1px solid var(--border-color);
     color: var(--text-color);
-    border-radius: 4px;
+    border-radius: 8px;
     box-sizing: border-box;
     margin-bottom: 0.5rem;
+    font-size: 1rem;
 }
 button {
     background-color: var(--primary-color);
-    color: #000;
+    color: #fff;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
     width: 100%;
-    transition: opacity 0.2s;
+    transition: all 0.2s ease-in-out;
+    font-size: 1rem;
 }
-button.secondary {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-}
-button.danger {
-    background-color: var(--danger-color);
-    color: #000;
+button:hover:not(:disabled) {
+    opacity: 0.85;
+    transform: translateY(-2px);
 }
 button:disabled {
+    background-color: var(--secondary-color);
     opacity: 0.5;
     cursor: not-allowed;
 }
-button:hover:not(:disabled) {
-    opacity: 0.9;
-}
-.input-group {
-    display: flex;
-    gap: 0.5rem;
-}
+.btn-secondary { background-color: var(--secondary-color); color: var(--text-color); }
+.btn-danger { background-color: var(--danger-color); color: #fff; }
+.input-group { display: flex; gap: 0.5rem; }
+.input-group input { flex-grow: 1; }
+.input-group button { width: auto; }
 #managed-tags-container, .clickable-tags-container {
     display: flex;
     flex-wrap: wrap;
@@ -123,44 +124,91 @@ button:hover:not(:disabled) {
 }
 .managed-tag, .clickable-tag {
     background-color: var(--secondary-color);
-    padding: 0.25rem 0.75rem;
-    border-radius: 12px;
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
     font-size: 0.9rem;
     cursor: pointer;
+    transition: background-color 0.2s;
+}
+.managed-tag:hover, .clickable-tag:hover {
+    background-color: var(--primary-color);
 }
 .meme-preview-card, .manager-meme-card {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 1rem;
     margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    position: relative;
 }
-.meme-preview-card .card-header, .manager-meme-card .card-header {
-    padding: 0;
-    margin: 0;
+.meme-preview-card.is-pending .card-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0,0,0,0.7);
+    color: var(--success-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 8px;
 }
 .meme-preview-card img, .manager-meme-card img {
     max-width: 100%;
     height: auto;
     border-radius: 4px;
+    margin-bottom: 1rem;
 }
 .meme-preview-card label, .manager-meme-card label {
-    font-weight: bold;
+    font-weight: 500;
     opacity: 0.9;
     margin-top: 0.5rem;
+    display: block;
+}
+.remove-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    line-height: 1;
+}
+.file-input-label {
+    display: block;
+    padding: 1rem;
+    background-color: var(--secondary-color);
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+input[type="file"] { display: none; }
+.prompt {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    border: 1px dashed var(--border-color);
+    opacity: 0.7;
 }
 #status-log {
     margin-top: 1rem;
     background-color: var(--bg-color);
     padding: 1rem;
-    border-radius: 4px;
+    border-radius: 8px;
     font-family: monospace;
     white-space: pre-wrap;
-    max-height: 200px;
+    max-height: 250px;
     overflow-y: auto;
     border: 1px solid var(--border-color);
+    font-size: 0.9rem;
 }
 .manager-meme-card .actions {
     display: flex;
