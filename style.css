@@ -1,10 +1,11 @@
-/* Basic Setup and Dark Theme */
 :root {
     --bg-color: #121212;
     --card-color: #1e1e1e;
     --primary-color: #bb86fc;
+    --secondary-color: #373737;
     --text-color: #e0e0e0;
     --border-color: #333;
+    --danger-color: #cf6679;
 }
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -17,7 +18,35 @@ main {
     max-width: 800px;
     margin: 0 auto;
 }
-/* Card Style for Sections */
+header {
+    max-width: 800px;
+    margin: 0 auto 1rem auto;
+    text-align: center;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    background-color: var(--card-color);
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+nav a:hover {
+    background-color: var(--secondary-color);
+}
+nav a.active {
+    background-color: var(--primary-color);
+    color: #000;
+    font-weight: bold;
+}
 .card {
     background-color: var(--card-color);
     border-radius: 8px;
@@ -25,15 +54,27 @@ main {
     margin-bottom: 1rem;
     border: 1px solid var(--border-color);
 }
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.card-header h2 {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
 h1, h2 {
     color: var(--primary-color);
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
+    margin-top: 0;
 }
 p {
     opacity: 0.8;
+    line-height: 1.5;
 }
-/* Inputs and Buttons */
 input[type="text"], input[type="password"] {
     width: 100%;
     padding: 0.75rem;
@@ -53,29 +94,41 @@ button {
     cursor: pointer;
     font-weight: bold;
     width: 100%;
+    transition: opacity 0.2s;
 }
-button:hover {
+button.secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+button.danger {
+    background-color: var(--danger-color);
+    color: #000;
+}
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+button:hover:not(:disabled) {
     opacity: 0.9;
 }
 .input-group {
     display: flex;
     gap: 0.5rem;
 }
-/* Tag Manager */
-#managed-tags-container {
+#managed-tags-container, .clickable-tags-container {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 1rem;
 }
-.managed-tag {
-    background-color: #333;
+.managed-tag, .clickable-tag {
+    background-color: var(--secondary-color);
     padding: 0.25rem 0.75rem;
     border-radius: 12px;
     font-size: 0.9rem;
+    cursor: pointer;
 }
-/* Meme Preview Cards */
-.meme-preview-card {
+.meme-preview-card, .manager-meme-card {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 1rem;
@@ -84,17 +137,20 @@ button:hover {
     flex-direction: column;
     gap: 0.5rem;
 }
-.meme-preview-card img {
+.meme-preview-card .card-header, .manager-meme-card .card-header {
+    padding: 0;
+    margin: 0;
+}
+.meme-preview-card img, .manager-meme-card img {
     max-width: 100%;
     height: auto;
     border-radius: 4px;
 }
-.meme-preview-card label {
+.meme-preview-card label, .manager-meme-card label {
     font-weight: bold;
     opacity: 0.9;
     margin-top: 0.5rem;
 }
-/* Status Log */
 #status-log {
     margin-top: 1rem;
     background-color: var(--bg-color);
@@ -104,4 +160,10 @@ button:hover {
     white-space: pre-wrap;
     max-height: 200px;
     overflow-y: auto;
+    border: 1px solid var(--border-color);
+}
+.manager-meme-card .actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
 }
