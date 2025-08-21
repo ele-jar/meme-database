@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme-ji Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Meme-ji Admin</h1>
+        <nav>
+            <a href="index.html">Uploader</a>
+            <a href="manager.html" class="active">Manager</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="auth-section" class="card">
+            <h2>Authentication</h2>
+            <p>Paste your GitHub Personal Access Token to begin. It's saved only on this device.</p>
+            <input type="password" id="github-token" placeholder="ghp_YourTokenHere...">
+            <button id="save-token">Connect to GitHub</button>
+        </section>
+
+        <div id="manager-section" style="display:none;">
+            <section class="card">
+                <h2>Meme Database Manager</h2>
+                <input type="text" id="search-input" placeholder="Search by title or tag...">
+                <div id="manager-status">Loading memes...</div>
+                <div id="manager-container"></div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
