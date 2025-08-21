@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme-ji Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Meme-ji Admin Uploader</h1>
+    </header>
+
+    <main>
+        <!-- Section for GitHub Token Authentication -->
+        <section id="auth-section" class="card">
+            <h2>Authentication</h2>
+            <p>Paste your GitHub Personal Access Token to begin. It's saved only on this device.</p>
+            <input type="password" id="github-token" placeholder="ghp_YourTokenHere...">
+            <button id="save-token">Connect to GitHub</button>
+        </section>
+
+        <!-- Main uploader section, hidden by default -->
+        <div id="uploader-section" style="display:none;">
+            
+            <!-- Section for managing your common tags -->
+            <section id="tag-manager-section" class="card">
+                <h2>Tag Manager</h2>
+                <p>Add your common tags here. They will appear as suggestions.</p>
+                <div class="input-group">
+                    <input type="text" id="tag-manager-input" placeholder="e.g., Reddit, Modi, Cat">
+                    <button id="add-tag-btn">Add Tag</button>
+                </div>
+                <div id="managed-tags-container"></div>
+            </section>
+
+            <!-- Section for uploading and editing memes -->
+            <section id="meme-uploader-section" class="card">
+                <h2>1. Select Memes</h2>
+                <input type="file" id="meme-files" multiple accept="image/*,video/*">
+                
+                <div id="meme-previews">
+                    <!-- Previews will be dynamically added here -->
+                </div>
+            </section>
+
+            <!-- Final submission button -->
+            <section id="submit-section" class="card">
+                <h2>2. Upload to Database</h2>
+                <button id="submit-all">Submit All Memes</button>
+                <div id="status-log"></div>
+            </section>
+        </div>
+    </main>
+    
+    <datalist id="tag-suggestions">
+        <!-- Tag suggestions will be dynamically added here -->
+    </datalist>
+
+    <script src="script.js"></script>
+</body>
+</html>
