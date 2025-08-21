@@ -24,28 +24,29 @@
         </section>
 
         <div id="uploader-section" style="display:none;">
-            <section id="tag-manager-section" class="card">
+            <section class="card">
                 <h2>Tag Manager</h2>
-                <p>Add common tags here. They will appear as clickable buttons below each meme.</p>
                 <div class="input-group">
                     <input type="text" id="tag-manager-input" placeholder="e.g., Reddit, Modi, Cat">
-                    <button id="add-tag-btn">Add Tag</button>
+                    <button id="add-tag-btn" class="btn-secondary">Add</button>
                 </div>
                 <div id="managed-tags-container"></div>
             </section>
 
-            <section id="meme-uploader-section" class="card">
+            <section class="card">
                 <div class="card-header">
-                    <h2>1. Select & Edit Memes</h2>
-                    <button id="clear-all-btn" class="secondary">Clear All</button>
+                    <h2>Select & Edit Memes</h2>
+                    <button id="clear-all-btn" class="btn-secondary">Clear All</button>
                 </div>
+                <label for="meme-files" class="file-input-label">Click to Select Meme Files</label>
                 <input type="file" id="meme-files" multiple accept="image/*,video/*">
+                <div id="upload-prompt" class="prompt">Select files to begin...</div>
                 <div id="meme-previews"></div>
             </section>
 
-            <section id="submit-section" class="card">
-                <h2>2. Upload to Database</h2>
-                <button id="submit-all">Submit All Memes</button>
+            <section class="card">
+                <h2>Upload to Database</h2>
+                <button id="submit-all" disabled>Submit All Memes</button>
                 <div id="status-log"></div>
             </section>
         </div>
