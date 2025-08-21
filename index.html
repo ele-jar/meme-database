@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meme-ji Admin</title>
+    <title>Meme-ji Uploader</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <header>
-        <h1>Meme-ji Admin Uploader</h1>
+        <h1>Meme-ji Admin</h1>
+        <nav>
+            <a href="index.html" class="active">Uploader</a>
+            <a href="manager.html">Manager</a>
+        </nav>
     </header>
 
     <main>
-        <!-- Section for GitHub Token Authentication -->
         <section id="auth-section" class="card">
             <h2>Authentication</h2>
             <p>Paste your GitHub Personal Access Token to begin. It's saved only on this device.</p>
@@ -21,13 +23,10 @@
             <button id="save-token">Connect to GitHub</button>
         </section>
 
-        <!-- Main uploader section, hidden by default -->
         <div id="uploader-section" style="display:none;">
-            
-            <!-- Section for managing your common tags -->
             <section id="tag-manager-section" class="card">
                 <h2>Tag Manager</h2>
-                <p>Add your common tags here. They will appear as suggestions.</p>
+                <p>Add common tags here. They will appear as clickable buttons below each meme.</p>
                 <div class="input-group">
                     <input type="text" id="tag-manager-input" placeholder="e.g., Reddit, Modi, Cat">
                     <button id="add-tag-btn">Add Tag</button>
@@ -35,17 +34,15 @@
                 <div id="managed-tags-container"></div>
             </section>
 
-            <!-- Section for uploading and editing memes -->
             <section id="meme-uploader-section" class="card">
-                <h2>1. Select Memes</h2>
-                <input type="file" id="meme-files" multiple accept="image/*,video/*">
-                
-                <div id="meme-previews">
-                    <!-- Previews will be dynamically added here -->
+                <div class="card-header">
+                    <h2>1. Select & Edit Memes</h2>
+                    <button id="clear-all-btn" class="secondary">Clear All</button>
                 </div>
+                <input type="file" id="meme-files" multiple accept="image/*,video/*">
+                <div id="meme-previews"></div>
             </section>
 
-            <!-- Final submission button -->
             <section id="submit-section" class="card">
                 <h2>2. Upload to Database</h2>
                 <button id="submit-all">Submit All Memes</button>
@@ -54,10 +51,7 @@
         </div>
     </main>
     
-    <datalist id="tag-suggestions">
-        <!-- Tag suggestions will be dynamically added here -->
-    </datalist>
-
+    <datalist id="tag-suggestions"></datalist>
     <script src="script.js"></script>
 </body>
 </html>
